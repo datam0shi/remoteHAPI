@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "d282b3c8-4c41-4b36-909e-13f37d413da7",
+		"name": "2.- OPERACIONES SERVIDOR REMOTO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30517054",
+		"_collection_link": "https://winter-trinity-378264.postman.co/workspace/PROYECTO-TESIS-TOM%25C3%2581S-JOFR%25C3%2589~182cd41c-f081-4014-96ae-2ddd101c2631/collection/30517054-d282b3c8-4c41-4b36-909e-13f37d413da7?action=share&source=collection_link&creator=30517054"
+	},
+	"item": [
+		{
+			"name": "$v Mal elemento (gender)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"John\"\r\n      ],\r\n      \"family\": \"Doe\"\r\n    }\r\n  ],\r\n  \"Sender\": \"male\",\r\n  \"birthDate\": \"1980-01-01\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/$validate"
+			},
+			"response": []
+		},
+		{
+			"name": "$v Mal formato (birthDate)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"John\"\r\n      ],\r\n      \"family\": \"Doe\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"98-01-01\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/$validate"
+			},
+			"response": []
+		},
+		{
+			"name": "$v OK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"John\"\r\n      ],\r\n      \"family\": \"Doe\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-01-01\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/$validate"
+			},
+			"response": []
+		},
+		{
+			"name": "POST recursos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient"
+			},
+			"response": []
+		},
+		{
+			"name": "GET recursos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient"
+			},
+			"response": []
+		},
+		{
+			"name": "GET recursos por ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/52/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET SearchParam (name)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": {
+					"raw": "167.71.174.241:8080/fhir/Patient?name=Tomás",
+					"host": [
+						"167",
+						"71",
+						"174",
+						"241"
+					],
+					"port": "8080",
+					"path": [
+						"fhir",
+						"Patient"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Tomás"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SearchParam (birthdate)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": {
+					"raw": "167.71.174.241:8080/fhir/Patient?birthdate=1998-10-16",
+					"host": [
+						"167",
+						"71",
+						"174",
+						"241"
+					],
+					"port": "8080",
+					"path": [
+						"fhir",
+						"Patient"
+					],
+					"query": [
+						{
+							"key": "birthdate",
+							"value": "1998-10-16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SearchParam (gender)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": {
+					"raw": "167.71.174.241:8080/fhir/Patient?gender=female",
+					"host": [
+						"167",
+						"71",
+						"174",
+						"241"
+					],
+					"port": "8080",
+					"path": [
+						"fhir",
+						"Patient"
+					],
+					"query": [
+						{
+							"key": "gender",
+							"value": "female"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT (gender)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"52\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"John\"\r\n      ],\r\n      \"family\": \"Doe\"\r\n    }\r\n  ],\r\n  \"gender\": \"female\",\r\n  \"birthDate\": \"1998-01-01\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/52"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE recurso",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"3152\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"John\"\r\n      ],\r\n      \"family\": \"Doe\"\r\n    }\r\n  ],\r\n  \"gender\": \"female\",\r\n  \"birthDate\": \"1998-01-01\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/52"
+			},
+			"response": []
+		},
+		{
+			"name": "GET revisar DELETE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"example\",\r\n  \"name\": [\r\n    {\r\n      \"given\": [\r\n        \"Tomás\"\r\n      ],\r\n      \"family\": \"Jofré\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1998-10-16\"\r\n}"
+				},
+				"url": "167.71.174.241:8080/fhir/Patient/"
+			},
+			"response": []
+		}
+	]
+}
